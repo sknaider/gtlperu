@@ -16,4 +16,5 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), sitemap()],
   output: "server",
   adapter: vercel()
+  
 });
