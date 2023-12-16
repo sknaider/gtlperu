@@ -1,0 +1,50 @@
+---
+import { Icon } from "astro-icon";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Button from "@components/ui/button.astro";
+import Contactform from "@components/contactform.astro";
+---
+
+<Layout title="Contact">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title" class="">
+        <h1 class="text-default text-3xl lg:text-5xl font-bold">Contacto</h1>
+      </Fragment>
+      <Fragment slot="desc">
+        <h2 class="text-lg leading-relaxed text-offset mt-3">
+          Tienes preguntas? Estamos para ayudarte.
+        </h2>
+      </Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
+      <div>
+        <h2 class="font-medium text-2xl text-default">Contacta a codemils</h2>
+        <p class="text-lg leading-relaxed text-offset mt-3">
+          Necesitas ayuda personzalida? ponte en contacto un uno de nuestros
+          desarrolladores.
+        </p>
+        <div class="mt-5">
+          <div class="flex items-center mt-2 space-x-2 text-primary">
+            <Icon class="text-default w-4 h-4" name="uil:map-marker" />
+            <span>1734 Sanfransico, CA 93063</span>
+          </div><div class="flex items-center mt-2 space-x-2 text-primary">
+            <Icon class="text-default w-4 h-4" name="uil:envelope" /><a
+              href="mailto:hello@astroship-pro.com">hello@astroship-pro.com</a
+            >
+          </div><div class="flex items-center mt-2 space-x-2 text-primary">
+            <Icon class="text-default w-4 h-4" name="uil:phone" /><a
+              href="tel:+1 (987) 4587 899">+1 (987) 4587 899</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="bg-slate-100 p-5 md:p-8 rounded-xl mb-5">
+        <Contactform />
+      </div>
+    </div>
+  </Container>
+</Layout>

@@ -7,7 +7,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <Container>
+  <Container class:list={"text-default"}>
     <Sectionhead>
       <Fragment slot="title">{frontmatter.title}</Fragment>
       <Fragment slot="desc">
@@ -15,7 +15,8 @@ const { frontmatter } = Astro.props;
       </Fragment>
     </Sectionhead>
 
-    <div class="mx-auto prose mt-10">
+    <!-- Utiliza la clase text-default directamente en el contenedor -->
+    <div class="mx-auto prose mt-10 text-default">
       <slot />
     </div>
   </Container>

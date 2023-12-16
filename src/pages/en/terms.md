@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/MdLayout.astro
+layout: ../../layouts/MdLayout.astro
 title: "Terms & Conditions"
 author: "Matthew Phillips"
 date: "09 Aug 2023"
@@ -9,7 +9,7 @@ Welcome to Astroship! We're excited to have you as a user of our Software-as-a-S
 
 By using our platform, you agree to be bound by these terms. If you do not agree with any part of these terms, please refrain from using Astroship.
 
-## 1. Account Creation and Usage
+## 1 Account Creation and Usage
 
 1.1. You must be at least 18 years old to use Astroship and create an account.
 

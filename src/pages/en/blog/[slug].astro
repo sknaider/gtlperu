@@ -21,25 +21,25 @@ const { Content } = await entry.render();
 <Layout title={entry.data.title}>
   <Container>
     <div class="mx-auto max-w-3xl text-center mt-14">
-      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+      <span class="text-primary uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
       </span>
       <h1
-        class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        class="text-3xl lg:text-4xl text-default font-bold lg:tracking-tight mt-1 lg:leading-tight">
         {entry.data.title}
       </h1>
       <div
         class="flex gap-2 mt-3 items-center justify-center text-sm flex-wrap md:flex-nowrap">
-        <span class="text-slate-400">
+        <span class="text-offset">
           {entry.data.author}
         </span>
         <span class="text-slate-400">•</span>
         <time
-          class="text-slate-400"
+          class="text-offset"
           datetime={entry.data.publishDate.toISOString()}>
           {entry.data.publishDate.toDateString()}
         </time>
-        <span class="text-slate-400 hidden md:block">•</span>
+        <span class="text-offset hidden md:block">•</span>
         <div class="w-full md:w-auto flex flex-wrap justify-center gap-3">
           {
             entry.data.tags.map((tag) => (
@@ -63,7 +63,7 @@ const { Content } = await entry.render();
     </div>
 
     <div
-      class="mx-auto prose mt-6 max-w-3xl prose-headings:mb-2 prose-headings:mt-8">
+      class="mx-auto prose mt-6 max-w-3xl prose-headings:mb-2 text=default prose-headings:mt-8">
       <Content />
     </div>
     <div class="text-center mt-12">

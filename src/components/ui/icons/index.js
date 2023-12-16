@@ -7,3 +7,5 @@ export { default as Messenger } from "./messenger.astro";
 export { default as Slack } from "./slack.astro";
 export { default as Shopify } from "./shopify.astro";
 export { default as Zapier } from "./zapier.astro";
+export { default as Dark } from "./dark.astro";
+export { default as Light } from "./light.astro";

@@ -1,0 +1,18 @@
+---
+import lightLogo from "./logo-light-mode.svg";
+import darkLogo from "./logo-dark-mode.svg";
+import { Picture } from "astro:assets";
+---
+
+<Picture
+  src={lightLogo}
+  alt="logo"
+  width={180}
+  class:list={"dark:hidden block"}
+/>
+<Picture
+  src={darkLogo}
+  alt="logo"
+  width={180}
+  class:list={"hidden dark:block"}
+/>

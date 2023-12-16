@@ -1,0 +1,14 @@
+---
+const { class: className, id, href, onclick, title } = Astro.props;
+---
+
+<a
+  id={id}
+  class={`cursor-pointer p-2 transition ease-in-out duration-200 flex justify-center rounded-lg  hover:shadow-lg ${className}`}
+  href={href}
+  target="_blank"
+  rel="noopener"
+  title={title}
+  onclick={onclick}>
+  <slot />
+</a>

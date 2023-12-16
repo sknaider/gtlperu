@@ -54,7 +54,9 @@ const faq = [
 
 <Container>
   <Sectionhead>
-    <Fragment slot="title">FAQ</Fragment>
+    <Fragment slot="title">
+      <h1 class="text-primary text-7xl font-bold">FAQ</h1>
+    </Fragment>
     <Fragment slot="desc">Frequenty asked questions</Fragment>
   </Sectionhead>
 
@@ -63,13 +65,13 @@ const faq = [
       faq.map((item) => (
         <div class="py-5">
           <details class="group">
-            <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+            <summary class="flex text-default justify-between items-center font-medium cursor-pointer list-none">
               <span> {item.question}</span>
               <span class="transition group-open:rotate-180">
                 <ArrowIcon />
               </span>
             </summary>
-            <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+            <p class="text-offset mt-3 group-open:animate-fadeIn">
               {item.answer}
             </p>
           </details>

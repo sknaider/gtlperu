@@ -9,7 +9,9 @@ const { text, title, name, image } = Astro.props;
   <!-- <div class="absolute font-serif text-5xl left-2 top-8 text-slate-300 -z-10">
     “
   </div> -->
-  <blockquote class="text-lg md:text-xl [text-wrap:balance]">{text}</blockquote>
+  <blockquote class="text-lg md:text-xl [text-wrap:balance] text-default">
+    {text}
+  </blockquote>
   <div class="flex items-center gap-3 mt-10">
     <div class="shrink-0">
       <Picture
@@ -23,7 +25,7 @@ const { text, title, name, image } = Astro.props;
       />
     </div>
     <div>
-      <h2 class="font-medium text-slate-800">{name}</h2>
+      <h2 class="font-medium text-default">{name}</h2>
       <p class="text-sm text-slate-600">{title}</p>
     </div>
   </div>

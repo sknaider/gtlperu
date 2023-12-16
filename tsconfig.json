@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": "src",
+    "jsx": "react-jsx",
     "paths": {
       "@lib/*": [
         "lib/*"
@@ -21,6 +22,12 @@
       ],
       "@pages/*": [
         "pages/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@types/*": [
+        "types/*"
       ],
     }
   }

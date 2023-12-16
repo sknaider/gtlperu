@@ -1,33 +1,97 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture, Image } from "astro:assets";
 import heroImage from "../assets/hero-screenshot.png";
+import otraImagen from "../assets/employee.jpg";
+
 import Link from "@components/ui/link.astro";
 import Container from "@components/container.astro";
+import MorphText from "./morph-text.astro";
+const currentLocale = Astro.currentLocale;
+
+// images
+// const images = [heroImage, otraImagen];
+
+interface Content {
+  header: Header;
+}
+
+interface Header {
+  title: string;
+  description: string;
+  button: Button;
+  button2: Button2;
+}
+
+interface Button {
+  text: string;
+  link: string;
+}
+
+interface Button2 {
+  text: string;
+  link: string;
+}
+
+const content: Content[] = [
+  {
+    header: {
+      title: "Crea aplicaciones web personalizadas™",
+      description:
+        "Versión Pro de la popular plantilla de inicio Astroship hecha para startups. Construido con Astro y Tailwind CSS.",
+      button: {
+        text: "Buy Template — $39",
+        link: "https://web3templates.com/templates/astroship-pro-astro-saas-website-template",
+      },
+      button2: {
+        text: "Free Version",
+        link: "https://github.com/surjithctly/astroship",
+      },
+    },
+  },
+  {
+    header: {
+      title: "Create websites with Astroship™",
+      description:
+        "Pro version of popular Astroship starter template made for startups. Built with Astro and Tailwind CSS.",
+      button: {
+        text: "Buy Template — $39",
+        link: "https://web3templates.com/templates/astroship-pro-astro-saas-website-template",
+      },
+      button2: {
+        text: "Free Version",
+        link: "https://github.com/surjithctly/astroship",
+      },
+    },
+  },
+];
+
+const contentCurrent = currentLocale == "es" ? content[0] : content[1];
+
+async function getImages() {
+  const image1 = await fetch("https://dummyimage.com/700x400/000/fff");
+  return [image1];
+}
+
+const images = await getImages();
 ---
 
 <div class="overflow-x-clip">
   <Container>
-    <main class="grid lg:grid-cols-5 place-items-center relative">
-      <div
-        class="absolute w-96 h-96 blur-2xl -z-10 bg-gradient-radial from-indigo-200 right-0 top-0">
+    <main class="grid lg:grid-cols-5 place-items-center mb-20 lg:mb-52 pt-20">
+      <!--<div
+        class="absolute w-96 h-96 blur-2xl -z-10 bg-gradient-radial from-secondary right-[20rem] top-10">
       </div>
       <div
-        class="absolute w-96 h-96 blur-2xl -z-10 bg-gradient-radial from-purple-200 right-56 top-10">
-      </div>
-
+        class="absolute w-96 h-96 blur-2xl -z-10 bg-gradient-radial from-primary right-40 top-10">
+      </div>-->
       <div class="max-w-sm md:max-w-max lg:col-span-2">
         <h1
-          class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter [text-wrap:balance] text-center lg:text-start">
-          Gtl Consulting™
+          class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter [text-wrap:balance] text-center lg:text-start text-default">
+          {contentCurrent.header.title}
         </h1>
         <p
-          class="text-lg mt-4 max-w-lg text-slate-600 [text-wrap:balance] text-center lg:text-start">
-          GTL Consulting Perú es una agencia de logística y asesoría aduanera. 
-          Nuestra trayectoria avala más de 3 años de experiencia en la industria del comercio exterior.
-           La empresa posee diversas jurisdicciones aduaneras posicionadas en los principales centros logísticos
-            del Perú, entre ellos: Callao, Tacna, Paita y el Aeropuerto Internacional Jorge Chávez. 
-            Por tanto, nuestra familia ofrece sostenibilidad y efectividad hacia cualquier operación de Importación
-             y Exportación de mercancía acorde a las exigencias y estándares de calidad del mercado actual. .
+          class="text-lg mt-4 max-w-lg text-offset [text-wrap:balance] text-center lg:text-start text-default-offset">
+          {contentCurrent.header.description}
         </p>
         <div
           class="mt-6 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-3">
@@ -36,7 +100,7 @@ import Container from "@components/container.astro";
             target="_blank"
             class="flex gap-1 items-center justify-center"
             rel="noopener">
-            Buy Template — $39
+            {contentCurrent.header.button.text}
           </Link>
           <Link
             size="lg"
@@ -45,21 +109,86 @@ import Container from "@components/container.astro";
             href="https://github.com/surjithctly/astroship"
             class="flex gap-1 items-center justify-center"
             target="_blank">
-            Free Version
+            {contentCurrent.header.button2.text}
           </Link>
         </div>
       </div>
-      <div class="py-3 lg:col-span-3 lg:-mr-44">
-        <Picture
-          src={heroImage}
-          alt="Astronaut in the air"
-          formats={["avif", "webp"]}
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          widths={[240, 540, 720, heroImage.width]}
-          loading="eager"
-          fetchpriority="high"
-        />
+      <div class="py-3 lg:col-span-3">
+        <images-container data-message={JSON.stringify(images)}>
+          {
+            images.map((image) => (
+              <Image
+                class="animation-container shadow-2xl shadow-primary ring-2 ring-offset-2 ring-offset-secondary ring-primary rounded-xl overflow-hidden"
+                src={image.url}
+                alt="Astronaut in the air"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                width="700"
+                height="400"
+              />
+            ))
+          }
+        </images-container>
       </div>
     </main>
   </Container>
 </div>
+<script>
+  class ImagesContainer extends HTMLElement {
+    constructor() {
+      super();
+      const message = JSON.parse(this.getAttribute("data-message") || "[]");
+      let currentIndex = 0;
+
+      function showImage(index: number) {
+        document.querySelectorAll(".animation-container").forEach((el, i) => {
+          const element = el as HTMLElement; // Realizar casting a HTMLElement
+          if (i === index) {
+            element.style.display = "block"; // Mostrar la imagen actual
+            setTimeout(() => {
+              element.classList.remove("fade-out");
+              element.classList.add("fade-in");
+            }, 50);
+          } else {
+            setTimeout(() => {
+              element.classList.remove("fade-in");
+              element.classList.add("fade-out");
+            }, 500);
+            element.style.display = "none"; // Ocultar las demás imágenes
+          }
+        });
+      }
+
+      function toggleImage() {
+        currentIndex = (currentIndex + 1) % message.length;
+        showImage(currentIndex);
+      }
+
+      setInterval(toggleImage, 5000); // Cambiar la imagen cada 5 segundos
+      showImage(currentIndex); // Mostrar la primera imagen al cargar la página
+    }
+  }
+
+  customElements.define("images-container", ImagesContainer);
+</script>
+
+<style>
+  .animation-container {
+    display: none; /* Ocultar todas las imágenes por defecto */
+  }
+
+  .fade-in {
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 2;
+    display: block; /* Mostrar la imagen con fade-in */
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    display: none; /* Ocultar la imagen con fade-out */
+  }
+
+  /* ... (código anterior) ... */
+</style>

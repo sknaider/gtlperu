@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root[class="light"] {
+    --color-primary: theme("colors.neoMint.600");
+    --color-secondary: theme("colors.nileStone.500");
+    --color-text: theme("colors.silverMedal.900");
+    --color-text-offset: theme("colors.silverMedal.900");
+    --color-text-over-primary: theme("colors.silverMedal.900");
+    --color-text-over-secondary: theme("colors.carbonFiber.900");
+    --color-background: theme("colors.white");
+    --color-background-offset: theme("colors.silverMedal.200");
+    --color-border: theme("colors.carbonFiber.700");
+  }
+
+  :root[class="dark"] {
+    --color-primary: theme("colors.neoMint.500");
+    --color-secondary: theme("colors.nileStone.400");
+    --color-text: theme("colors.silverMedal.100");
+    --color-text-offset: theme("colors.silverMedal.600");
+    --color-text-over-primary: theme("colors.silverMedal.800");
+    --color-text-over-secondary: theme("colors.carbonFiber.800");
+    --color-background: theme("colors.carbonFiber.900");
+    --color-background-offset: theme("colors.carbonFiber.800");
+    --color-border: theme("colors.carbonFiber.100");
+  }
+}
