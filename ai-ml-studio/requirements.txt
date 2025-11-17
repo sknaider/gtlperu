@@ -81,6 +81,7 @@ click>=8.1.7
 tqdm>=4.66.0
 loguru>=0.7.2
 rich>=13.7.0
+colorama>=0.4.6  # Colored terminal output
 
 # API & HTTP
 httpx>=0.25.0
