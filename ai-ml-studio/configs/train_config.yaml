@@ -1,0 +1,62 @@
+# AI ML Studio - Training Configuration Example
+
+# Model Configuration
+model:
+  name: "resnet50"
+  num_classes: 10
+  pretrained: true
+
+# Data Configuration
+data:
+  dataset: "cifar10"
+  data_dir: "./data"
+  batch_size: 32
+  num_workers: 4
+  train_split: 0.8
+  val_split: 0.2
+  augmentation: true
+
+# Training Configuration
+training:
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: "adamw"  # adam, sgd, adamw, rmsprop
+  scheduler: "cosine"  # cosine, step, plateau, onecycle
+  gradient_clip: 1.0
+
+  # Hardware
+  device: "cuda"  # cuda, cpu
+  mixed_precision: true
+  gradient_checkpointing: false
+  num_gpus: 1
+
+  # Checkpointing
+  save_dir: "./models/checkpoints"
+  save_every: 5
+  save_best_only: true
+
+  # Logging
+  log_every: 10
+  mlflow_tracking: true
+  wandb_tracking: false
+
+  # Early Stopping
+  early_stopping: true
+  patience: 10
+
+  # Advanced
+  resume_from: null  # path to checkpoint
+  seed: 42
+
+# Loss Function
+loss:
+  name: "cross_entropy"
+  label_smoothing: 0.1
+
+# Metrics
+metrics:
+  - "accuracy"
+  - "f1_score"
+  - "precision"
+  - "recall"
