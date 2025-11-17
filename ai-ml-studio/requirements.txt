@@ -120,3 +120,14 @@ notebook>=7.0.0
 # Gradio for UI
 gradio>=4.11.0
 streamlit>=1.29.0
+
+# Additional Libraries
+timm>=0.9.12  # PyTorch Image Models (1000+ vision models)
+PyPDF2>=3.0.1  # PDF processing
+python-docx>=1.1.0  # DOCX processing
+rank-bm25>=0.2.2  # BM25 for hybrid search
+deepspeed>=0.12.0  # Distributed training optimization
+flash-attn>=2.3.0  # Flash Attention for faster transformers
+einops>=0.7.0  # Tensor operations
+scikit-multilearn>=0.2.0  # Multi-label classification
+imbalanced-learn>=0.11.0  # Handle imbalanced datasets
